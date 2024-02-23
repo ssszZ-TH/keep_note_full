@@ -42,3 +42,19 @@ mongo-express:
 
 จาก code ส่วนหนึ่งใน yaml file จะเห็นได้ว่า backdoor ของ admin ถูก expose ออกมามาที่เคครื่อง host ใช้สำหรับการ debug\
 ถ้าต้องการให้ database ปลอดภัยมาขึ้นควรเอา port ออก
+
+# deploy ไปที่ aws
+- สร้าง instance ตามกำลังทรัพย์ ของผมใช้ free tier
+- เลือกเป็น ubantu os (ตัวอื่นอาจจะได้ ไม่เคยลอง)
+- install docker 
+- install git
+- create inbound rule ให้กับ instance \
+```
+port 80:80       nginx
+port 8081:8081   backdoor to database 
+```
+
+- conmpose up
+```
+docker compose up -d [argrument อื่นๆ ตามใจ]
+```
