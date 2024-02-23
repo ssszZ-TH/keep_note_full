@@ -30,3 +30,15 @@ nginx คือ revers proxy\
 volume คือ ข้อมูลใน database ซึ่งจะเชื่อมต่อกับ part ใน mongodb container \
 compose yaml คือตัวที่ไว้ให้ docker มา compose up เเล้วสามารถใช้งานได้\
 
+# warning
+
+```
+mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    ...
+```
+
+จาก code ส่วนหนึ่งใน yaml file จะเห็นได้ว่า backdoor ของ admin ถูก expose ออกมามาที่เคครื่อง host ใช้สำหรับการ debug\
+ถ้าต้องการให้ database ปลอดภัยมาขึ้นควรเอา port ออก
